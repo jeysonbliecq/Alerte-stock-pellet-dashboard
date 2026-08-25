@@ -1,5 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" role="img" aria-labelledby="title desc">
   <title id="title">Alerte Pellet</title>
-  <desc id="desc">Logo officiel Alerte Pellet fourni par le projet : flamme, pellets et wordmark sur fond transparent.</desc>
-  <image x="0" y="0" width="1254" height="1254" preserveAspectRatio="xMidYMid meet" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABOYAAATmCAYAAAAYGgaFAAA..."/>
+  <desc id="desc">Logo Alerte Pellet avec flamme, granulés noirs et texte blanc orange</desc>
+  <defs>
+    <linearGradient id="pellet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#44484f"/>
+      <stop offset="0.5" stop-color="#17191d"/>
+      <stop offset="1" stop-color="#08090b"/>
+    </linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffb000"/>
+      <stop offset="0.45" stop-color="#ff7a00"/>
+      <stop offset="1" stop-color="#ff4500"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#000" flood-opacity=".45"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <image href="logo-transparent.png" x="16" y="4" width="188" height="188" preserveAspectRatio="xMidYMid meet"/>
+
+    <g transform="translate(84 100)">
+      <g transform="rotate(-54 45 40)">
+        <rect x="12" y="8" width="108" height="40" rx="20" fill="url(#pellet)" stroke="#fff" stroke-width="7"/>
+        <ellipse cx="116" cy="28" rx="17" ry="18" fill="#22252a" stroke="#fff" stroke-width="6"/>
+      </g>
+      <g transform="rotate(-22 72 65)">
+        <rect x="34" y="48" width="116" height="42" rx="21" fill="url(#pellet)" stroke="#fff" stroke-width="7"/>
+        <ellipse cx="145" cy="69" rx="18" ry="19" fill="#22252a" stroke="#fff" stroke-width="6"/>
+      </g>
+      <g transform="rotate(17 62 82)">
+        <rect x="20" y="74" width="116" height="42" rx="21" fill="url(#pellet)" stroke="#fff" stroke-width="7"/>
+        <ellipse cx="25" cy="95" rx="18" ry="19" fill="#22252a" stroke="#fff" stroke-width="6"/>
+      </g>
+    </g>
+
+    <text x="218" y="153" font-family="Arial Black,Arial,sans-serif" font-size="76" font-weight="900" letter-spacing="-4" fill="#202329" stroke="#fff" stroke-width="7" paint-order="stroke fill">Alerte</text>
+    <text x="438" y="153" font-family="Arial Black,Arial,sans-serif" font-size="76" font-weight="900" letter-spacing="-4" fill="url(#orange)" stroke="#111" stroke-width="3" paint-order="stroke fill">Pellet</text>
+  </g>
 </svg>
