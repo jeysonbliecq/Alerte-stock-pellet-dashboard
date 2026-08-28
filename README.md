@@ -6,6 +6,17 @@ Dashboard public du projet **Alerte Pellet** pour le suivi des stocks, prix et r
 
 ## Validation UI
 
+### 28 août 2026 — Validation globale du bloc dashboard
+
+Le bloc d'améliorations UI actuellement déployé est validé dans son ensemble :
+
+- logos magasins locaux ;
+- compte à rebours réel jusqu'au prochain cycle Debian ;
+- photos produits locales optimisées ;
+- affichage validé sur le dashboard public.
+
+Ces éléments deviennent la base de référence pour les prochaines évolutions du dashboard.
+
 ### 28 août 2026 — Logos magasins validés
 
 Les logos affichés sur les cartes magasins du dashboard sont validés pour :
