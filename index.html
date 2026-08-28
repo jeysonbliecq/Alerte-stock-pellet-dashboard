@@ -29,8 +29,26 @@
 @keyframes apLogoIn{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:none}}
 @media(max-width:600px){.ap-loading-inner{padding:16px}.ap-loading-logo{width:94vw}.ap-loading-title{margin-top:18px}.ap-loading-track{width:84vw}.ap-loading-countdown{width:72px;height:72px}.ap-loading-count{font-size:28px}.ap-loading-powered{margin-top:20px;font-size:14px}}
 @media(prefers-reduced-motion:reduce){.ap-loading-logo,.ap-loading-countdown:before{animation:none}.ap-loading-bar{animation-timing-function:linear}}
-</style></head><body><div class="jeyzee-signature jeyzee-signature-top">🔥 Alerte Pellet · <strong>Powered by JeyZee</strong></div><div id="ap-loading-screen" role="status" aria-live="polite" aria-label="Chargement du dashboard Alerte Pellet"><div class="ap-loading-inner"><img class="ap-loading-logo" src="assets/logo/logo-banner.png?v=5" alt="Alerte Pellet — Stocks, Prix, Promotions"><div class="ap-loading-title">Chargement du dashboard…</div><div class="ap-loading-track" aria-hidden="true"><div class="ap-loading-bar"></div></div><div class="ap-loading-countdown" aria-hidden="true"><span class="ap-loading-count" id="ap-loading-count">3</span><span class="ap-loading-sec">SEC</span></div><div class="ap-loading-status" id="ap-loading-status">Initialisation · 3 s</div><div class="ap-loading-powered">Powered by <strong>JeyZee</strong></div></div></div>
-<div class="top"><div class="brand"><img class="brand-logo" src="assets/logo/logo-dashboard.png?v=5" alt="Logo Alerte Pellet"><div class="brand-copy"><h1>Stocks, prix & réapprovisionnements</h1><div class="muted">Mise à jour : 28/08/2026 10:59:06 — 1665 observations — 3 retour(s) en stock détecté(s)</div></div></div></div>
+</style>
+<style id="jeyzee-store-logos-style">
+.store-title-with-logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.store-title-with-logo img.store-logo{
+  height:28px;
+  width:auto;
+  max-width:150px;
+  object-fit:contain;
+  border-radius:8px;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+</style>
+
+</head><body><div class="jeyzee-signature jeyzee-signature-top">🔥 Alerte Pellet · <strong>Powered by JeyZee</strong></div><div id="ap-loading-screen" role="status" aria-live="polite" aria-label="Chargement du dashboard Alerte Pellet"><div class="ap-loading-inner"><img class="ap-loading-logo" src="assets/logo/logo-banner.png?v=5" alt="Alerte Pellet — Stocks, Prix, Promotions"><div class="ap-loading-title">Chargement du dashboard…</div><div class="ap-loading-track" aria-hidden="true"><div class="ap-loading-bar"></div></div><div class="ap-loading-countdown" aria-hidden="true"><span class="ap-loading-count" id="ap-loading-count">3</span><span class="ap-loading-sec">SEC</span></div><div class="ap-loading-status" id="ap-loading-status">Initialisation · 3 s</div><div class="ap-loading-powered">Powered by <strong>JeyZee</strong></div></div></div>
+<div class="top"><div class="brand"><img class="brand-logo" src="assets/logo/logo-dashboard.png?v=5" alt="Logo Alerte Pellet"><div class="brand-copy"><h1>Stocks, prix & réapprovisionnements</h1><div class="muted">Mise à jour : 28/08/2026 11:05:16 — 1665 observations — 3 retour(s) en stock détecté(s)</div></div></div></div>
 <div class="kpis" id="kpis"></div>
 <div class="grid" id="stores"></div>
 <div class="card"><h2>🗺️ Carte des magasins surveillés</h2><div id="storeMap" class="store-map"></div></div>
@@ -147,4 +165,52 @@ const logos={
 };
 const root=document.getElementById('stores');if(!root)return;
 for(const card of root.querySelectorAll(':scope > .card')){const h2=card.querySelector('h2');if(!h2)continue;const store=h2.textContent.trim();const logo=logos[store];if(!logo||card.querySelector('.store-brand-head'))continue;const wrap=document.createElement('div');wrap.className='store-brand-head';h2.parentNode.insertBefore(wrap,h2);wrap.innerHTML=logo;wrap.appendChild(h2);}
-})();</script><footer class="jeyzee-signature jeyzee-signature-bottom">🔥 Alerte Pellet · <strong>Powered by JeyZee</strong></footer></body></html>
+})();</script><footer class="jeyzee-signature jeyzee-signature-bottom">🔥 Alerte Pellet · <strong>Powered by JeyZee</strong></footer>
+<script id="jeyzee-store-logos-script">
+document.addEventListener('DOMContentLoaded', () => {
+  const logos = [
+    { match: ['Castorama Englos', 'Castorama'], src: './assets/logos/castorama.svg', alt: 'Castorama' },
+    { match: ['Bricorama Loos', 'Bricorama'], src: './assets/logos/bricorama.svg', alt: 'Bricorama' },
+    { match: ['Auchan Englos', 'Auchan'], src: './assets/logos/auchan.svg', alt: 'Auchan' },
+    { match: ['Chronodrive Hallennes-lez-Haubourdin', 'Chronodrive'], src: './assets/logos/chronodrive.svg', alt: 'Chronodrive' }
+  ];
+
+  const candidates = Array.from(document.querySelectorAll('h1,h2,h3,h4,strong,.card-title,.store-name,.shop-name,td,th,span,div'))
+    .filter(el => {
+      const txt = (el.textContent || '').trim();
+      return txt && txt.length < 90 && !el.querySelector('img.store-logo');
+    });
+
+  for (const el of candidates) {
+    const text = (el.textContent || '').trim();
+
+    for (const logo of logos) {
+      const ok = logo.match.some(m => text.includes(m));
+      if (!ok) continue;
+
+      if (el.closest('.store-title-with-logo')) continue;
+
+      const wrapper = document.createElement('span');
+      wrapper.className = 'store-title-with-logo';
+
+      const img = document.createElement('img');
+      img.src = logo.src;
+      img.alt = logo.alt;
+      img.className = 'store-logo';
+      img.loading = 'lazy';
+
+      const label = document.createElement('span');
+      label.textContent = text;
+
+      wrapper.appendChild(img);
+      wrapper.appendChild(label);
+
+      el.textContent = '';
+      el.appendChild(wrapper);
+      break;
+    }
+  }
+});
+</script>
+
+</body></html>
