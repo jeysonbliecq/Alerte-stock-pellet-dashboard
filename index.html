@@ -29,8 +29,8 @@
 @keyframes apLogoIn{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:none}}
 @media(max-width:600px){.ap-loading-inner{padding:16px}.ap-loading-logo{width:94vw}.ap-loading-title{margin-top:18px}.ap-loading-track{width:84vw}.ap-loading-countdown{width:72px;height:72px}.ap-loading-count{font-size:28px}.ap-loading-powered{margin-top:20px;font-size:14px}}
 @media(prefers-reduced-motion:reduce){.ap-loading-logo,.ap-loading-countdown:before{animation:none}.ap-loading-bar{animation-timing-function:linear}}
-</style></head><body><div class="jeyzee-signature jeyzee-signature-top">🔥 Alerte Pellet · <strong>Powered by JeyZee</strong></div><div id="ap-loading-screen" role="status" aria-live="polite" aria-label="Chargement du dashboard Alerte Pellet"><div class="ap-loading-inner"><img class="ap-loading-logo" src="assets/logo/logo-banner.png?v=5" alt="Alerte Pellet — Stocks, Prix, Promotions"><div class="ap-loading-title">Chargement du dashboard…</div><div class="ap-loading-track" aria-hidden="true"><div class="ap-loading-bar"></div></div><div class="ap-loading-countdown" aria-hidden="true"><span class="ap-loading-count" id="ap-loading-count">3</span><span class="ap-loading-sec">SEC</span></div><div class="ap-loading-status" id="ap-loading-status">Initialisation · 3 s</div><div class="ap-loading-powered">Powered by <strong>JeyZee</strong></div></div></div>
-<div class="top"><div class="brand"><img class="brand-logo" src="assets/logo/logo-dashboard.png?v=5" alt="Logo Alerte Pellet"><div class="brand-copy"><h1>Stocks, prix & réapprovisionnements</h1><div class="muted">Mise à jour : 28/08/2026 11:11:22 — 1673 observations — 3 retour(s) en stock détecté(s)</div></div></div></div>
+.store-brand-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}.store-brand-head h2{margin:0;min-width:0}.store-brand-logo{display:flex;align-items:center;justify-content:center;width:138px;height:46px;padding:5px 8px;border-radius:10px;background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.28);overflow:hidden;flex:0 0 auto}.store-brand-logo--chronodrive{width:154px}.store-brand-img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}@media(max-width:600px){.store-brand-head{gap:9px;align-items:center}.store-brand-logo{width:112px;height:40px}.store-brand-logo--chronodrive{width:126px}.store-brand-head h2{font-size:19px;line-height:1.15}}</style></head><body><div class="jeyzee-signature jeyzee-signature-top">🔥 Alerte Pellet · <strong>Powered by JeyZee</strong></div><div id="ap-loading-screen" role="status" aria-live="polite" aria-label="Chargement du dashboard Alerte Pellet"><div class="ap-loading-inner"><img class="ap-loading-logo" src="assets/logo/logo-banner.png?v=5" alt="Alerte Pellet — Stocks, Prix, Promotions"><div class="ap-loading-title">Chargement du dashboard…</div><div class="ap-loading-track" aria-hidden="true"><div class="ap-loading-bar"></div></div><div class="ap-loading-countdown" aria-hidden="true"><span class="ap-loading-count" id="ap-loading-count">3</span><span class="ap-loading-sec">SEC</span></div><div class="ap-loading-status" id="ap-loading-status">Initialisation · 3 s</div><div class="ap-loading-powered">Powered by <strong>JeyZee</strong></div></div></div>
+<div class="top"><div class="brand"><img class="brand-logo" src="assets/logo/logo-dashboard.png?v=5" alt="Logo Alerte Pellet"><div class="brand-copy"><h1>Stocks, prix & réapprovisionnements</h1><div class="muted">Mise à jour : 28/08/2026 11:17:31 — 1673 observations — 3 retour(s) en stock détecté(s)</div></div></div></div>
 <div class="kpis" id="kpis"></div>
 <div class="grid" id="stores"></div>
 <div class="card"><h2>🗺️ Carte des magasins surveillés</h2><div id="storeMap" class="store-map"></div></div>
@@ -147,4 +147,21 @@ const logos={
 };
 const root=document.getElementById('stores');if(!root)return;
 for(const card of root.querySelectorAll(':scope > .card')){const h2=card.querySelector('h2');if(!h2)continue;const store=h2.textContent.trim();const logo=logos[store];if(!logo||card.querySelector('.store-brand-head'))continue;const wrap=document.createElement('div');wrap.className='store-brand-head';const box=document.createElement('span');box.className='store-brand-logo'+(logo.wide?' store-brand-logo--chronodrive':'');const img=document.createElement('img');img.src=logo.src;img.alt='Logo '+logo.alt;img.loading='lazy';img.decoding='async';img.referrerPolicy='no-referrer';img.onerror=function(){this.style.display='none';};box.appendChild(img);h2.parentNode.insertBefore(wrap,h2);wrap.appendChild(box);wrap.appendChild(h2);}
-})();</script><footer class="jeyzee-signature jeyzee-signature-bottom">🔥 Alerte Pellet · <strong>Powered by JeyZee</strong></footer></body></html>
+})();</script><footer class="jeyzee-signature jeyzee-signature-bottom">🔥 Alerte Pellet · <strong>Powered by JeyZee</strong></footer><script data-real-store-brand-logos="1">(function(){
+const logos={
+  'Castorama Englos':{alt:'Castorama',src:'https://upload.wikimedia.org/wikipedia/commons/f/f0/Castorama_Logo.svg'},
+  'Bricorama Loos':{alt:'Bricorama',src:'https://upload.wikimedia.org/wikipedia/commons/6/63/Bricorama_2022_logo.svg'},
+  'Auchan Englos':{alt:'Auchan',src:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Auchan_wordmark.svg'},
+  'Chronodrive Hallennes-lez-Haubourdin':{alt:'Chronodrive',src:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Logo_chrono.png',wide:true}
+};
+const root=document.getElementById('stores');if(!root)return;
+for(const card of root.querySelectorAll(':scope > .card')){
+  const h2=card.querySelector('h2');if(!h2)continue;
+  const store=h2.textContent.trim();const logo=logos[store];if(!logo)continue;
+  const old=card.querySelector('.store-brand-head');if(old){const oldH2=old.querySelector('h2');if(oldH2)old.parentNode.insertBefore(oldH2,old);old.remove();}
+  const wrap=document.createElement('div');wrap.className='store-brand-head';
+  const box=document.createElement('span');box.className='store-brand-logo'+(logo.wide?' store-brand-logo--chronodrive':'');
+  const img=document.createElement('img');img.className='store-brand-img';img.src=logo.src;img.alt=logo.alt;img.loading='eager';img.referrerPolicy='no-referrer';
+  box.appendChild(img);h2.parentNode.insertBefore(wrap,h2);wrap.appendChild(box);wrap.appendChild(h2);
+}
+})();</script></body></html>
