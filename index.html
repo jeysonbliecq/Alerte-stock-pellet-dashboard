@@ -58,9 +58,11 @@ kpis.innerHTML=[
   ['Meilleur prix',best,bestSub,'down']
 ].map(x=>'<div class="kpi"><div class="label">'+x[0]+'</div><div class="value '+x[3]+'">'+x[1]+'</div><div class="muted">'+x[2]+'</div></div>').join('');
 
+const PRODUCT_IMAGE_MAP={"All Green 15 kg":"all-green.jpg","FLAMINO All Green 15 kg":"all-green.jpg","Woodstock 15 kg":"woodstock.jpg","Woodstock Premium 15 kg":"woodstock.jpg","WOODSTOCK Premium NF DIN+ 15 kg":"woodstock.jpg","WOODSTOCK Granulés bois de chauffage premium 15 kg":"woodstock.jpg","Pellet qualité supérieure 15 kg":"qualite-superieure.jpg","Granulés feuillus/résineux DINplus 15 kg":"feuillus-resineux.jpg"};
+const productPhoto=p=>{const image=PRODUCT_IMAGE_MAP[p.product];return image?'<img class="product-photo" src="assets/product-images/'+image+'" alt="'+String(p.product).replace(/"/g,'&quot;')+'" loading="lazy" decoding="async">':''};
 const grouped={};for(const p of DATA.latest){(grouped[p.store]??=[]).push(p)}
 const root=document.getElementById('stores');
-for(const [store,products] of Object.entries(grouped)){const el=document.createElement('section');el.className='card';el.innerHTML='<h2>'+store+'</h2>'+products.map(p=>{const cls=p.status==='InStock'?'in':p.status==='OutOfStock'?'out':'unknown';const label=p.status==='InStock'?'EN STOCK':p.status==='OutOfStock'?'RUPTURE':'INCONNU';const price=realPrice(p.price)?euro(p.price):'prix N/D';return '<div class="product"><strong>'+p.product+'</strong><br><span class="'+cls+'">● '+label+'</span> · '+price+'<br><span class="muted">'+p.localDate+' '+String(p.localTime||'').slice(0,5)+'</span> · <a href="'+p.url+'" target="_blank" rel="noopener">ouvrir le produit</a></div>'}).join('');root.appendChild(el)}
+for(const [store,products] of Object.entries(grouped)){const el=document.createElement('section');el.className='card';el.innerHTML='<h2>'+store+'</h2>'+products.map(p=>{const cls=p.status==='InStock'?'in':p.status==='OutOfStock'?'out':'unknown';const label=p.status==='InStock'?'EN STOCK':p.status==='OutOfStock'?'RUPTURE':'INCONNU';const price=realPrice(p.price)?euro(p.price):'prix N/D';return '<div class="product">'+productPhoto(p)+'<strong>'+p.product+'</strong><br><span class="'+cls+'">● '+label+'</span> · '+price+'<br><span class="muted">'+p.localDate+' '+String(p.localTime||'').slice(0,5)+'</span> · <a href="'+p.url+'" target="_blank" rel="noopener">ouvrir le produit</a></div>'}).join('');root.appendChild(el)}
 
 if(window.L&&DATA.storeLocations?.length){
   const map=L.map('storeMap',{scrollWheelZoom:false});
