@@ -28,6 +28,8 @@ Les logos affichés sur les cartes magasins du dashboard sont validés pour :
 
 Les assets locaux utilisés sont stockés dans `assets/store-logos/`.
 
+**Correction Chronodrive validée le 28 août 2026 :** le `C` du logo Chronodrive affiché sur le dashboard utilise désormais le vert Chronodrive, en remplacement de l'ancienne version blanche. Ce rendu devient la référence visuelle officielle pour Chronodrive dans Alerte Pellet.
+
 ### 28 août 2026 — Compte à rebours prochaine mise à jour validé
 
 Le dashboard affiche désormais un compte à rebours dynamique jusqu'au prochain cycle réel de surveillance.
